@@ -1,28 +1,47 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <!-- <div id="app"> -->
+    <div class="container">
+      <!-- 巨幕  搜索框 -->
+      <Search />
+      <!-- GitHub 用户列表 -->
+      <List />
+    </div>
+  <!-- </div> -->
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Search from './components/GithubUserSearch.vue'
+import List from './components/GithubUserList.vue'
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+  name: 'MyApp',
+  components: {Search, List}
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.album {
+  min-height: 50rem;
+  /* Can be removed; just added for demo purposes */
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  background-color: #f7f7f7;
+}
+
+.card {
+  float: left;
+  width: 33.333%;
+  padding: .75rem;
+  margin-bottom: 2rem;
+  border: 1px solid #efefef;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+}
+
+.card>img {
+  margin-bottom: .75rem;
+  border-radius: 100px;
+}
+
+.card-text {
+  font-size: 85%;
 }
 </style>
