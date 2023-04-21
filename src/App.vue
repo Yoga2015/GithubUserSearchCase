@@ -1,11 +1,14 @@
 <template>
   <!-- <div id="app"> -->
-    <div class="container">
-      <!-- 巨幕  搜索框 -->
-      <Search />
-      <!-- GitHub 用户列表 -->
-      <List />
-    </div>
+  <div class="container">
+
+    <!-- 巨幕  搜索框 -->
+    <Search />
+
+    <!-- GitHub 用户列表 -->
+    <List />
+
+  </div>
   <!-- </div> -->
 </template>
 
@@ -14,7 +17,7 @@ import Search from './components/GithubUserSearch.vue'
 import List from './components/GithubUserList.vue'
 export default {
   name: 'MyApp',
-  components: {Search, List}
+  components: { Search, List }
 }
 </script>
 
