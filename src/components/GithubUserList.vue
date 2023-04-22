@@ -2,18 +2,19 @@
   <!-- GitHub 用户列表 -->
   <div class="row">
     <!-- 展示用户列表 -->
-    <div v-show="users.length" class="card" v-for="user in users" :key="user.login">
+    <div v-show="info.users.length" class="card" 
+          v-for="user in info.users" :key="user.login">
       <a :href="user.html_url" target="_blank">
         <img :src="user.avatar_url" style='width: 100px' />
       </a>
       <p class="card-text">{{ user.login }}</p>
     </div>
     <!-- 展示欢迎词 -->
-    <h1 v-show="isFirst">欢迎使用！</h1>
+    <h1 v-show="info.isFirst">欢迎使用！</h1>
     <!-- 展示记载中 -->
-    <h1 v-show="isLoading">加载中</h1>
+    <h1 v-show="info.isLoading">加载中</h1>
     <!-- 展示错误信息 -->
-    <h1 v-show="errMsg">{{ errMsg }}</h1>
+    <h1 v-show="info.errMsg">{{ info.errMsg }}</h1>
   </div>
 </template>
 
@@ -22,19 +23,23 @@ export default {
   name: 'GithubUserList',
   data() {
     return {
+      info: {
         isFirst: true,
         isLoading: false,
         errMsg: '',
         users: []
+      }
     }
   },
   mounted() {
     // 接收方
-    this.$bus.$on('getUsers', (users) => {
-      console.log('我是GithubUserList组件,我收到了数据', users);
-      this.users = users
+    // this.$bus.$on('getUsers', (users) => {
+    //   console.log('GithubUserList组件,收到了数据', users);
+    //   this.users = users
+    // })
+    this.$bus.$on('updataListData', (dataObj) => {
+      this.info = dataObj
     })
-    
   }
 }
 </script>
